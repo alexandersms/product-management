@@ -1,0 +1,16 @@
+GET http://localhost:3420/products
+
+### Créer un produit
+POST http://localhost:3420/products
+
+### Récupérer un produit par rapport à un id
+GET http://localhost:3420/products/id
+
+### Modifier un produit par rapport à un id
+PATCH http://localhost:3420/products/id
+
+### Supprimer un produit par rapport à un id
+DELETE http://localhost:3420/products/id
+
+###
+GET http://localhost:3420/jjukl

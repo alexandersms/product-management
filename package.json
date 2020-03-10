@@ -1,0 +1,19 @@
+{
+  "name": "restapi_product",
+  "version": "1.0.0",
+  "description": "API REST pour la gestion des produits",
+  "main": "app.js",
+  "scripts": {
+    "server": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Alex SIMISI NTA",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.4",
+    "morgan": "^1.9.1"
+  }
+}
