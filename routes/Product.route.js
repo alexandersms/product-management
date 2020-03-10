@@ -1,17 +1,36 @@
 const router = require("express").Router();
+const Product = require("../models/Product.model");
 
-router.get("/", (req, res, next) => {
-  next(new Error("Impossible de charger tous les produits"));
-  //res.send("Récupération de tous les produits...");
+// Récupération de tous les produits
+router.get("/", async (req, res, next) => {
+  try {
+    const result = await Product.find({}, { __v: 0 });
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(400).json(err.message);
+  }
 });
 
-router.post("/", (req, res, next) => {
-  res.send("Création d'un produit");
+//Créer un produit
+router.post("/", async (req, res, next) => {
+  try {
+    const product = new Product(req.body);
+    const result = await product.save();
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(400).json(err.message);
+  }
 });
 
 // Routes parameters
-router.get("/:id", (req, res, next) => {
-  res.send("Récupération d'un produit");
+router.get("/:id", async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const product = await Product.findById(id);
+    res.status(200).json(product);
+  } catch (err) {
+    res.status(400).json(err.message);
+  }
 });
 
 router.patch("/:id", (req, res, next) => {

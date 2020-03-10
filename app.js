@@ -2,21 +2,31 @@ const express = require("express");
 const colors = require("colors");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
-const connectDB = require("./config/db")
+const connectDB = require("./config/db");
 
-
-dotenv.config({ path: './config/config.env' });
+dotenv.config({ path: "./config/config.env" });
 
 connectDB();
 
 const app = express();
-app.use(express.json())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
 /* Middleware */
 // Morgan
-if(process.env.NODE_ENV === "development"){
-    app.use(morgan("dev"))
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
 }
+
+app.all("/test", (req, res) => {
+  //console.log(req.query);
+  //console.log(req.query.name);
+  //res.send(req.query);
+  //console.log(req.params);
+  //res.send(req.params);
+  console.log(req.body);
+  res.send(req.body);
+});
 
 // Import Routes
 const ProductRoute = require("./routes/Product.route");
@@ -42,4 +52,9 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 3420;
 
-app.listen(port, () => console.log(`Démarrage du server en environnement de ${process.env.NODE_ENV} sur le port ${port}`.blue.bold));
+app.listen(port, () =>
+  console.log(
+    `Démarrage du server en environnement de ${process.env.NODE_ENV} sur le port ${port}`
+      .blue.bold
+  )
+);
