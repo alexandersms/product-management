@@ -33,12 +33,26 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.patch("/:id", (req, res, next) => {
-  res.send("Modification d'un produit");
+router.patch("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const updates = req.body;
+    const options = { new: true };
+    const result = await Product.findByIdAndUpdate(id, updates, options);
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(400).json(err.message);
+  }
 });
 
-router.delete("/:id", (req, res, next) => {
-  res.send("Suppression d'un produit");
+router.delete("/:id", async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const result = await Product.findByIdAndDelete(id);
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(400).json(err.message);
+  }
 });
 
 module.exports = router;
