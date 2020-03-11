@@ -2,6 +2,7 @@ const express = require("express");
 const colors = require("colors");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
+const createError = require('http-errors');
 const connectDB = require("./config/db");
 
 dotenv.config({ path: "./config/config.env" });
@@ -19,11 +20,6 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.all("/test", (req, res) => {
-  //console.log(req.query);
-  //console.log(req.query.name);
-  //res.send(req.query);
-  //console.log(req.params);
-  //res.send(req.params);
   console.log(req.body);
   res.send(req.body);
 });
@@ -34,9 +30,12 @@ const ProductRoute = require("./routes/Product.route");
 app.use("/products", ProductRoute);
 
 app.use((req, res, next) => {
+  /*
   const err = new Error("Non trouvée");
   err.status = 404;
   next(err);
+  */
+  next(createError(404, "Non trouvée"))
 });
 
 // Error handler

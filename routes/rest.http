@@ -5,27 +5,27 @@ POST http://localhost:3420/products
 Content-Type: application/json
 
 {
-    "name": "iMac Pro - Retina 4K",
+    "name": "iMac Pro Max",
     "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
     "image": "https://www.rueducommerce.fr/medias/13c2f6739183370988f300295fea45bb/p_580x580/imac-pro-pure-front-screen.png",
-    "price": 3500
+    "price": 2500
 }
 
 ### Récupérer un produit par rapport à un id
-GET http://localhost:3420/products/5e68192d4eab373268c30cc2
+GET http://localhost:3420/products/5e6819054eab373268c30cc1
 
 ### Modifier un produit par rapport à un id
-PATCH http://localhost:3420/products/5e68192d4eab373268c30cc2
+PATCH http://localhost:3420/products/5e6819054eab373268c30cc1
 Content-Type: application/json
 
 {
-    "name": "Samsung S9 +++",
-    "price": 650
+    "name": "Samsung S9 +",
+    "price": 700
 }
 
 
 ### Supprimer un produit par rapport à un id
-DELETE http://localhost:3420/products/5e6827a16042d34310db7649
+DELETE http://localhost:3420/products/5e6843f89184a21ba7d89595
 
 ###
 GET http://localhost:3420/jjukl
