@@ -30,11 +30,6 @@ const ProductRoute = require("./routes/Product.route");
 app.use("/products", ProductRoute);
 
 app.use((req, res, next) => {
-  /*
-  const err = new Error("Non trouvée");
-  err.status = 404;
-  next(err);
-  */
   next(createError(404, "Non trouvée"))
 });
 

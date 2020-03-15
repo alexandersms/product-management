@@ -4,8 +4,8 @@
   "description": "API REST pour la gestion des produits",
   "main": "app.js",
   "scripts": {
-    "server": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node app.js",
+    "server": "nodemon app.js"
   },
   "author": "Alex SIMISI NTA",
   "license": "ISC",
