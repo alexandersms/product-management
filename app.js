@@ -27,7 +27,7 @@ app.all("/test", (req, res) => {
 // Import Routes
 const ProductRoute = require("./routes/Product.route");
 
-app.use("/products", ProductRoute);
+app.use("/api/v1/products", ProductRoute);
 
 app.use((req, res, next) => {
   next(createError(404, "Non trouvée"))
