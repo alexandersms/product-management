@@ -2,7 +2,7 @@ const express = require("express");
 const colors = require("colors");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
-const createError = require('http-errors');
+const createError = require("http-errors");
 const connectDB = require("./config/db");
 
 dotenv.config({ path: "./config/config.env" });
@@ -11,7 +11,7 @@ connectDB();
 
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
 /* Middleware */
 // Morgan
@@ -30,7 +30,7 @@ const ProductRoute = require("./routes/Product.route");
 app.use("/api/v1/products", ProductRoute);
 
 app.use((req, res, next) => {
-  next(createError(404, "Non trouvée"))
+  next(createError(404, "Non trouvée"));
 });
 
 // Error handler

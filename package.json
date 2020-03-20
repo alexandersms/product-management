@@ -1,11 +1,13 @@
-{
+    {
   "name": "restapi_product",
   "version": "1.0.0",
   "description": "API REST pour la gestion des produits",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "server": "nodemon app.js"
+    "server": "nodemon app.js",
+    "client": "npm run serve --prefix clientvue",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Alex SIMISI NTA",
   "license": "ISC",
@@ -16,5 +18,8 @@
     "http-errors": "^1.7.3",
     "mongoose": "^5.9.4",
     "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0"
   }
 }
